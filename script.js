@@ -1,18 +1,39 @@
 //your code here
-let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
+// let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
 
-function removeArticales(name) {
-	return name.replace(/^(a|an|the)\s+/i,' ');
-}
+// function removeArticales(name) {
+// 	return name.replace(/^(a|an|the)\s+/i,' ');
+// }
 
-touristSpots.sort((a,b)=> removeArticales(a).localeCompaire(removeArticales(b)));
+// touristSpots.sort((a,b)=> removeArticales(a).localeCompaire(removeArticales(b)));
 
-let ul =document.getElementsByTagName("ul")[0];
-ul.id ="bands"
+// let ul =document.getElementsByTagName("ul")[0];
+// ul.id ="bands"
 
-touristSpots.forEach((touristSpot)=>
-	let li = document.createElement("li")
-	li.textContent = touristSpot;
-	ul.appendChild(li)
+// touristSpots.forEach((touristSpot)=>
+// 	let li = document.createElement("li")
+// 	li.textContent = touristSpot;
+// 	ul.appendChild(li)
 					
-)
+// )
+
+let bandNames=['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal']
+let articles = ['A', 'AN', 'THE']
+ 
+	bandNames.sort((a,b) => (strip(a)> strip(b))? 1: -1)
+	const ref= document.getElementsByTagName("ul")[0] 
+	for (let i=0;i<bandNames.length; i++){
+		const li = document.createElement("li")
+		li.innerText= bandNames [i]
+		ref.append(li)
+	}
+function strip(word){
+	let arr = word.split(" ")
+	let s=""
+	for(let i=0;i<arr.length;i++){
+if(articles.indexOf(arr[i].toUpperCase()) === -1){
+	s=s+arr[i]
+}
+}
+return s.trim()
+}
